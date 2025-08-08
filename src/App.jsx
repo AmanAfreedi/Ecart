@@ -5,7 +5,7 @@ import AllProducts from './components/AllProducts'
 import { Route, Routes } from 'react-router'
 import ProductDetails from "./components/ProductDetails"
 
-
+//he
 const App = () => {
   const [count, setcount] = useState(0);
   const [cart, setcart] = useState({});
