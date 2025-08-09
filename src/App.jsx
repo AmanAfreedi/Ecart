@@ -9,7 +9,8 @@ import ProductDetails from "./components/ProductDetails"
 const App = () => {
   
   const [count, setcount] = useState(0);
-  const [cart, setcart] = useState(JSON.parse(localStorage.getItem("my-cart")) || "{}");
+  
+  const [cart, setcart] = useState(JSON.parse(localStorage.getItem("my-cart") || "{}"));
   function HandleAddToCart(id, quantity) {
     const newQuantity = (cart[id]||0) + parseInt(quantity)
     const newCart = {...cart , [id]:newQuantity}
