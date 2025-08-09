@@ -27,9 +27,9 @@ const ProductDetails = ({onAddToCart}) => {
   }
   return (
     <>
-      <div className='flex flex-col mb-10 max-w-6xl m-auto mt-10 md:pt-20  md:p-10 shadow-2xl p-2'>
+      <div className='flex flex-col mb-10 max-w-6xl m-auto mt-10 md:pt-20  md:p-10 shadow-2xl p-2 mx-5'>
         <div className=' flex flex-col md:flex-row   '>
-          <Link to={"/"}><FiArrowLeft className='hover:text-orange-500 hover:border-orange-500 w-7 h-7 p-1 mt-[-50px] border-1 rounded-[50%]' /></Link>
+          <Link to={"/"}><FiArrowLeft className='hover:text-orange-500 hover:border-orange-500 w-7 h-7 p-1 -mt-10 md:mt-[-50px] border-1 rounded-[50%]' /></Link>
           <img className='md:w-[500pxpx] md:h-[500px] border-[0.1px] border-gray-300 object-contain' src={Product.thumbnail} alt="Image" />
 
           <div className='flex flex-col ml-1 gap-3 md:ml-10'>
@@ -38,7 +38,7 @@ const ProductDetails = ({onAddToCart}) => {
             <p className='text-gray-600 md:text-xl'>{Product.description}</p>
             <div className=' flex justify-center md:justify-start'>
               <input className='shadow w-15 h-10 pl-3 text-center mr-5 ' type="number" value={num} onChange={handleNumChange} />
-              <button onClick={onButtonClick} className='bg-orange-500  rounded w-35 pt-2 pb-2 pl-7 mb-2  text-white hover:bg-orange-00'>Add To Cart </button>
+              <button onClick={onButtonClick} className='bg-orange-500  rounded w-35   text-white hover:bg-orange-00'>Add To Cart </button>
             </div>
             <div className='w-[100%] bg-gray-300 h-[1px]'></div>
             <p>Category: <span className='text-orange-500'>{Product.category}</span></p>
