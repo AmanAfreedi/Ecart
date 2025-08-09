@@ -22,7 +22,7 @@ const App = () => {
     const sum = Object.keys(cart).reduce((prev,curr)=>{
       return prev+cart[curr];
     },0)
-    setcount(sum);
+    setcount(parseInt(sum));
   },[cart])
   
   console.log("Cart updated:", cart);
