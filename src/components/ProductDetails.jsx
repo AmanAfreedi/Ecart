@@ -27,7 +27,7 @@ const ProductDetails = ({onAddToCart}) => {
   }
   return (
     <>
-      <div className='flex flex-col mb-10 max-w-6xl m-auto mt-10 md:pt-20  md:p-10 shadow-2xl p-2 mx-5'>
+      <div className='flex flex-col mb-10 max-w-6xl md:m-auto mt-10 md:pt-20  md:p-10 shadow-2xl p-2 mx-5 '>
         <div className=' flex flex-col md:flex-row   '>
           <Link to={"/"}><FiArrowLeft className='hover:text-orange-500 hover:border-orange-500 w-7 h-7 p-1 -mt-10 md:mt-[-50px] border-1 rounded-[50%]' /></Link>
           <img className='md:w-[500pxpx] md:h-[500px] border-[0.1px] border-gray-300 object-contain' src={Product.thumbnail} alt="Image" />

@@ -5,16 +5,19 @@ import AllProducts from './components/AllProducts'
 import { Route, Routes } from 'react-router'
 import ProductDetails from "./components/ProductDetails"
 
-//he
+
 const App = () => {
+  
   const [count, setcount] = useState(0);
-  const [cart, setcart] = useState({});
+  const [cart, setcart] = useState(JSON.parse(localStorage.getItem("my-cart")) || "{}");
   function HandleAddToCart(id, quantity) {
-    setcart(function (prevCart) {
-      const oldQuantity = prevCart[id] || 0;
-      return { ...prevCart, [id]: oldQuantity + parseInt(quantity) };
-    });
+    const newQuantity = (cart[id]||0) + parseInt(quantity)
+    const newCart = {...cart , [id]:newQuantity}
+    const savedCartString= JSON.stringify(newCart);
+    localStorage.setItem("my-cart",savedCartString);
+    setcart(newCart)
   }
+  
   useEffect(()=>{
     const sum = Object.keys(cart).reduce((prev,curr)=>{
       return prev+cart[curr];
