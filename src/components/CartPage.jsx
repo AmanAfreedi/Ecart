@@ -15,7 +15,7 @@ const CartPage = (props) => {
       <div>
           <CartList cartItems={props.cartItems} GetTotal={GetTotal} />
       </div>
-      <div className='border-[0.1px] border-gray-500 w-md self-end mt-10 mr-4'>
+      <div className='border-[0.1px] border-gray-500 w-[80%] md:w-[35vw] self-center md:self-end mt-10 mr-4'>
 
         <CartTotal totalPrice={TotalPrice}/>
       </div>

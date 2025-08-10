@@ -20,16 +20,16 @@ const CartList = ({GetTotal , cartItems}) => {
             setProducts(products)
         })
     }, [cartItems])
-    console.log(Products)
+  
     useEffect(()=>{
         let total=0;
         for(let i=0;i<Products.length;i++){
             total += (Products[i].price * parseInt(cart[Products[i].id]));
         }
         settotalPrice(total.toFixed(2))
-        GetTotal(totalPrice)
+        GetTotal(total.toFixed(2))
 
-    },[Products])
+    },[Products,cart])
     console.log(totalPrice)
    
 
