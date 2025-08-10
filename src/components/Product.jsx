@@ -1,9 +1,8 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Link } from 'react-router'
 const Product = (info) => {
+  console.log("Product Running")
   return (
-    
-
       <Link to={`/productDetails/${info.id}`} className='font-semibold'>
       <div className=' overflow-hidden h-[450px] -mb-18  md:max-w-[380px] md:h-auto w-auto md:my-3 mx-1 flex flex-col p-2'>
         <img className='aspect-square md:object-contain border-[0.1px] border-gray-300' src={info.img} alt="" />
@@ -12,8 +11,8 @@ const Product = (info) => {
         <p>${info.price}</p>
       </div>
       </Link>
-    
   )
 }
 
-export default Product
+
+export default memo(Product)

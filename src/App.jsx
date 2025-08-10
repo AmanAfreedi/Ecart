@@ -4,6 +4,7 @@ import Footer from "./components/Footer"
 import AllProducts from './components/AllProducts'
 import { Route, Routes } from 'react-router'
 import ProductDetails from "./components/ProductDetails"
+import CartPage from './components/CartPage'
 
 
 const App = () => {
@@ -26,7 +27,7 @@ const App = () => {
     setcount(parseInt(sum));
   },[cart])
   
-  console.log("Cart updated:", cart);
+  
   console.log(count);
   return (
     <div className='bg-gray-100 overflow-x-hidden h-screen flex flex-col overflow-y-visible'>
@@ -35,6 +36,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<AllProducts />} />
           <Route path='/productDetails/:id' element={<ProductDetails onAddToCart={HandleAddToCart} />} />
+          <Route path ='cart' element={<CartPage cartItems={cart}/>}/>
         </Routes>
 
       </div>

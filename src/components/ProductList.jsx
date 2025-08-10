@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { memo } from 'react'
 import Product from './Product'
 
 const ProductList = ({products}) => {
+  console.log("ProductList running")
   return (
     <div className='md:grid grid-cols-3 max-w-6xl justify-center'>
       {products.map(function(item){
@@ -11,4 +12,4 @@ const ProductList = ({products}) => {
   )
 }
 
-export default ProductList
+export default memo(ProductList)
