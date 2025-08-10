@@ -44,7 +44,7 @@ const AllProducts = () => {
       return parseInt(y.price)-parseInt(x.price);
     })
   }
-  console.log(data)
+  
   return (
     <div className='flex flex-col max-w-6xl mx-auto flex-wrap px-5'>
     

@@ -8,19 +8,28 @@ import Loading from './Loading';
 const ProductDetails = ({onAddToCart}) => {
   const { id } = useParams()
   const [Product, setproduct] = useState({})
-  let [p, setp] = useState(true);
+  const [LoadingAnimation , setLoadingAnimation] = useState(true);
+  const [num, setnum] = useState(1);
+  
   useEffect(function () {
+    setLoadingAnimation(true);
     getProduct(id).then((item) => {
-      setproduct(item)
-      setp(false);
+      setproduct(item);
+     console.log(item);
+    }).finally(()=>{
+    
+      setLoadingAnimation(false)
     })
   }, [id])
+  if(LoadingAnimation){
+    return <Loading/>
+  }
   
   
-  const [num, setnum] = useState(1);
   function handleNumChange(event) {
     setnum(event.target.value);
   }
+  
   function onButtonClick() {
     onAddToCart(id, num);
     setnum(1);
@@ -46,8 +55,8 @@ const ProductDetails = ({onAddToCart}) => {
         </div>
         <div className='flex flex-col gap-2 ml-7 mt-2'>
           <div className='flex gap-3'>
-            <Link className='font-bold'> Description</Link>
-          <Link className='font-bold'>Reviews(0)</Link>
+            <Link to={"/"} className='font-bold'> Description</Link>
+          <Link to={"/"} className='font-bold'>Reviews(0)</Link>
           </div>
           
           <div><p>{Product.description}</p></div>

@@ -1,0 +1,66 @@
+import React, { useEffect, useState } from 'react'
+import CartRow from './CartRow'
+import { getProduct } from './Api'
+
+
+const CartList = ({GetTotal , cartItems}) => {
+    const [Products, setProducts] = useState([]);
+    const [totalPrice , settotalPrice] =useState(0);
+    const [cart, setcart] = useState({})
+    
+    useEffect(() => {
+        setcart(JSON.parse(localStorage.getItem("my-cart")))
+    }, [])
+    
+    useEffect(() => {
+        const promises = Object.keys(cartItems).map((ProductID) => {
+            return getProduct(ProductID)
+        })
+        Promise.all(promises).then((products) => {
+            setProducts(products)
+        })
+    }, [cartItems])
+    console.log(Products)
+    useEffect(()=>{
+        let total=0;
+        for(let i=0;i<Products.length;i++){
+            total += (Products[i].price * parseInt(cart[Products[i].id]));
+        }
+        settotalPrice(total.toFixed(2))
+        GetTotal(totalPrice)
+
+    },[Products])
+    console.log(totalPrice)
+   
+
+
+
+    return (
+        <div className='m-auto gap-2 '>
+            <div className='max-w-6xl h-auto border border-gray-300 mx-4 bg-gray-200 -mb-2 flex flex-col overflow-hidden'>
+                <div className='flex justify-around h-10 items-center'>
+                    <p className='ml-[3vw]'>Image</p>
+                    <p className='ml-[5vw]'>Product</p>
+                    <p className='ml-[10vw]'>Price</p>
+                    <p className='ml-[3vw]'>Quantity</p>
+                    <p>Subtotal</p>
+                </div>
+                {Products.map((product) => {
+
+                    return <CartRow product={product} />
+                })}
+                <div className='flex pl-7 h-14 items-center bg-white '>
+                    <input type="text" placeholder='Coupon Code' className='bg-white border pl-4  h-7 rounded-md justify-self-start border-gray-400' />
+                    <button className='bg-orange-500 px-2 py-1 mx-3 rounded text-white hover:bg-orange-600'>
+                        Apply Coupon
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+    )
+}
+
+export default CartList
