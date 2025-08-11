@@ -35,7 +35,7 @@ const SignUpPage = () => {
     return (
         <div className='flex justify-center items-center w-screen h-screen bg-gradient-to-t from-[#0e4cc7] to-white'>
             <form onSubmit={handleSubmit} >
-                <div className='w-auto flex flex-col '>
+                <div className='w-auto -mt-30 flex flex-col '>
                     <PiShoppingCartThin className='text-white text-[150px] ml-10 md:ml-18' />
 
                     <input onChange={handleChange} onBlur={handleBlur} name="email" type="email" placeholder='Email' className='border border-white mt-3 rounded text-white pl-3 h-13 w-65 md:w-80 ' >

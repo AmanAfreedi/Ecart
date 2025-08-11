@@ -29,7 +29,7 @@ const LoginPage = () => {
     
     <div className='flex justify-center items-center w-screen h-screen bg-gradient-to-t from-[#0e4cc7] to-white'>
         <form onSubmit={handleSubmit}>
-        <div className='w-auto flex flex-col'>
+        <div className='w-auto flex -mt-30 flex-col'>
                 <PiShoppingCartThin className='text-white text-[150px] ml-10 md:ml-18' />
                 <div >
                 <CiUser className='text-3xl mt-10 -mb-10 ml-2 text-white '/>
