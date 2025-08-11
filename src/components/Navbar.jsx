@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 const Navbar = ({count}) => {
   return (
     <div className=' w-screen h-[100px] shadow bg-white'>
-      <div className='flex items-center max-w-6xl justify-between mx-auto px-5'>
+      <div className='flex items-center max-w-5xl justify-between mx-auto px-5'>
         <img className='h-[80px] ml-2' src="https://logolook.net/wp-content/uploads/2021/03/Amazon-Logo-2000.png" alt="" />
         <div className='flex items-center'>
           <Link to={"/login"} className='font-semibold text-xl rounded border border-[#ff5151] px-3 text-center pb-1 mr-5 text-[#ff5151]  ' >Login</Link>
