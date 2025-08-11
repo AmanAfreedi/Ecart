@@ -22,7 +22,7 @@ const ForgotPassword = () => {
     return (
         <div className='flex justify-center items-center w-screen h-screen bg-gradient-to-t from-[#0e4cc7] to-white'>
             <form onSubmit={handleSubmit}>
-                <div className='w-auto flex flex-col '>
+                <div className='w-auto -mt-30 flex flex-col '>
                     <PiShoppingCartThin className='text-white text-[150px] ml-10 md:ml-18' />
                     <h1 className='md:text-3xl text-2xl self-center text-white font-semibold font-sans underline'>Reset your password</h1>
                     <span className='w-65 md:w-80 text-white/70 mt-5'><p>Enter the email associated with your accound and we'll send you password reset instructions </p></span>
