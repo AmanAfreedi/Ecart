@@ -5,6 +5,9 @@ import AllProducts from './components/AllProducts'
 import { Route, Routes } from 'react-router'
 import ProductDetails from "./components/ProductDetails"
 import CartPage from './components/CartPage'
+import LoginPage from './components/LoginPage'
+import SignUpPage from './components/SignUpPage'
+import ForgotPassword from './components/ForgotPassword'
 
 
 const App = () => {
@@ -30,13 +33,18 @@ const App = () => {
   
   console.log(count);
   return (
-    <div className='bg-gray-100 overflow-x-hidden h-screen flex flex-col overflow-y-visible'>
+    
+    <div className=' bg-gray-100 overflow-x-hidden h-screen flex flex-col overflow-y-visible'>
       <Navbar className="fixed" count={count} />
       <div className='grow'>
         <Routes>
           <Route path='/' element={<AllProducts />} />
           <Route path='/productDetails/:id' element={<ProductDetails onAddToCart={HandleAddToCart} />} />
           <Route path ='cart' element={<CartPage cartItems={cart}/>}/>
+          <Route path ='/login' element={<LoginPage/>}/>
+          <Route path ='/signup' element={<SignUpPage/>}/>
+          <Route path ='/forgotpassword' element={<ForgotPassword/>}/>
+
         </Routes>
 
       </div>
