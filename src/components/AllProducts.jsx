@@ -50,8 +50,8 @@ const AllProducts = () => {
     
     <div className='flex flex-col grow bg-white self-center max-w-6xl mt-10 mb-10 '>
       <div className='flex justify-between'>
-      <input onChange={handleQueryChange} type="text" placeholder='Search' className=' bg-blue-50 w-[100px] md:w-[150px] ml-10 md:ml-15 pl-4 border-1 md:w-[280px] h-10 mt-20'/>
-      <select onChange={handleSortChange} className='border  md: bg-blue-50 p-1 md:pl-3 md:w-[280px] mr-10 md:pr-10  mt-20  w-[100px] md:mr-15'>
+      <input onChange={handleQueryChange} type="text" placeholder='Search' className=' bg-blue-50 w-[100px] ml-10 md:ml-3 pl-4 border-1 md:w-[280px] h-10 mt-20'/>
+      <select onChange={handleSortChange} className='border  md: bg-blue-50 p-1 md:pl-3 md:w-[280px] mr-10 md:pr-10  mt-20  w-[100px] md:mr-3'>
           <option value="default">Default Sort</option>
           <option value="title">Sort by title</option>
           <option value="l2h">Sort by price: low to high</option>
