@@ -14,7 +14,7 @@ const CartRow = ({product,cartItems, updateCart , localCart,setlocalCart}) => {
         const newValue = event.target.value;
         const productId=event.target.getAttribute('productid');
         console.log(newValue , productId)
-        const newcart = {...localCart , [productId]:parse(newValue)};
+        const newcart = {...localCart , [productId]:parseInt(newValue)};
         {newValue>0 && setlocalCart(newcart)};
     }
     
