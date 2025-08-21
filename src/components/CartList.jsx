@@ -1,28 +1,30 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import CartRow from './CartRow'
 import { getProduct } from './Api'
 import { CiCircleRemove } from "react-icons/ci";
+import { CartContext } from '../App';
 
-const CartList = ({ GetTotal, cartItems, updateCart }) => {
+const CartList = ({GetTotal ,updateCart}) => {
+    const {cart, setcart } = useContext(CartContext);
     const [Products, setProducts] = useState([]);
     const [totalPrice, settotalPrice] = useState(0);
-    const [localCart, setlocalCart] = useState(cartItems);
+    const [localCart, setlocalCart] = useState(cart);
     useEffect(() => {
-        setlocalCart(cartItems);
-    }, [cartItems])
+        setlocalCart(cart);
+    }, [cart])
     useEffect(() => {
-        const promises = Object.keys(cartItems).map((ProductID) => {
+        const promises = Object.keys(cart).map((ProductID) => {
             return getProduct(ProductID)
         })
         Promise.all(promises).then((products) => {
             setProducts(products)
         })
-    }, [cartItems])
+    }, [cart])
 
     useEffect(() => {
         let total = 0;
         for (let i = 0; i < Products.length; i++) {
-            total += (Products[i].price * parseInt(cartItems[Products[i].id]));
+            total += (Products[i].price * parseInt(cart[Products[i].id]));
         }
         settotalPrice(total.toFixed(2))
         GetTotal(total.toFixed(2))
@@ -31,7 +33,7 @@ const CartList = ({ GetTotal, cartItems, updateCart }) => {
     console.log(totalPrice)
 
     function updateMyCart() {
-        updateCart(localCart);
+        setcart(localCart);
     }
     return (
         <div className='m-auto gap-2 '>
@@ -45,7 +47,7 @@ const CartList = ({ GetTotal, cartItems, updateCart }) => {
                 </div>
                 {Products.map((product) => {
 
-                    return <div> <CartRow localCart={localCart} setlocalCart={setlocalCart} product={product} cartItems={cartItems} updateCart={updateCart} /> </div>
+                    return <div> <CartRow localCart={localCart} setlocalCart={setlocalCart} product={product} cartItems={cart} updateCart={updateCart} /> </div>
                 })}
                 <div className='flex pl-7 h-14 items-center justify-between bg-white'>
 

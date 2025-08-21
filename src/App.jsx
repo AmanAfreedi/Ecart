@@ -10,13 +10,15 @@ import SignUpPage from './components/SignUpPage'
 import ForgotPassword from './components/ForgotPassword'
 import axios from 'axios'
 import Loading from './components/Loading'
+import CartList from './components/CartList'
 
 export const UserContext = createContext();
+export const CartContext = createContext();
 
 const App = () => {
   const [count, setcount] = useState(0);
   const [user, setUser] = useState();
-  const [cart, setcart] = useState(JSON.parse(localStorage.getItem("my-cart") || "{}"));
+  const [cart, setcart] = useState(JSON.parse(localStorage.getItem("my-cart"))|| {});
   const [userLoading , setUserLoading] = useState(false);
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -40,6 +42,7 @@ const App = () => {
     const newCart = { ...cart, [id]: newQuantity }
     updateCart(newCart)
   }
+  
   function updateCart(newCart) {
     const savedCartString = JSON.stringify(newCart);
     localStorage.setItem("my-cart", savedCartString);
@@ -60,7 +63,7 @@ const App = () => {
   }
   
   return (
-
+    <CartContext.Provider value={{cart , setcart}}>
     <UserContext.Provider value={{user , setUser}}>
     <div className=' bg-gray-100 overflow-x-hidden h-screen flex flex-col overflow-y-visible'>
       <Navbar className="fixed" count={count} user={user} setUser={setUser} />
@@ -68,7 +71,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<AllProducts  />} />
           <Route path='/productDetails/:id' element={<ProductDetails onAddToCart={HandleAddToCart} />} />
-          <Route path='cart' element={<CartPage  />} />
+          <Route path='cart' element={<CartPage updateCart={updateCart}/>} />
           <Route path='/login' element={<EasyLogin  />} />
           <Route path='/signup' element={<SignUpPage  />} />
           <Route path='/forgotpassword' element={<ForgotPassword />} />
@@ -78,6 +81,7 @@ const App = () => {
       <Footer />
     </div>
     </UserContext.Provider>
+    </CartContext.Provider>
   )
 }
 

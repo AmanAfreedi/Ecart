@@ -7,7 +7,7 @@ const CartRow = ({product,cartItems, updateCart , localCart,setlocalCart}) => {
     function handleRemove(event){
         const newCart ={...cartItems}
         delete newCart[event.target.getAttribute('productid')];
-        console.log("product to be remoed" , event.target.getAttribute('productid'));
+        console.log("product to be removed" , event.target.getAttribute('productid'));
         updateCart(newCart);
     }
      function handleInputChange(event){
