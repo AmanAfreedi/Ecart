@@ -1,12 +1,21 @@
 import { Form, Formik, withFormik, } from 'formik'
 import React from 'react'
 import { PiShoppingCartThin } from 'react-icons/pi'
-import { Link } from 'react-router'
+import { Link, Navigate } from 'react-router'
 import * as Yup from 'yup';
 import Input from './Input'
-function callSignUpApi(values) {
-    console.log("signed Api called with ", values.username, values.email, values.password)
+import axios from 'axios';
+import withUser from './withUser';
+function callSignUpApi(values , bag) {
+     axios.post("https://myeasykart.codeyogi.io/signup",{fullName:values.username , email:values.email , password:values.password}).then((response)=>{
+        const {user , token} =response.data;
+        bag.props.setUser(user);
+        localStorage.setItem("token" , token);
+        
+    })
+   
 }
+
 const Schema = Yup.object().shape({
     username: Yup.string()
         .min(5)
@@ -20,14 +29,16 @@ const Schema = Yup.object().shape({
 
 
 })
-const inititalValues = {
+const initialValues = {
     email: "",
     username: "",
     password: "",
-    ConfirmPassword: ""
+   
 }
-const SignUpPage = ({ values, errors, touched, handleSubmit, handleChange, handleBlur }) => {
-
+const SignUpPage = ({ values, errors, touched, handleSubmit, handleChange, handleBlur,setUser,user}) => {
+    if(user){
+        return <Navigate to="/" />
+    }
 
     return (
         <div className='flex justify-center items-center w-screen h-screen bg-gradient-to-t from-[#0e4cc7] to-white'>
@@ -71,6 +82,6 @@ const SignUpPage = ({ values, errors, touched, handleSubmit, handleChange, handl
         </div>
     )
 }
-const myHoc = withFormik({ inititalValues: inititalValues, validationSchema: Schema, handleSubmit: callSignUpApi })
+const myHoc = withFormik({ initialvalues: initialValues, validationSchema: Schema, handleSubmit: callSignUpApi })
 const easySignUp = myHoc(SignUpPage);
-export default easySignUp;
+export default withUser(easySignUp);

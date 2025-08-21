@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router'
+import { Link, Navigate, useParams } from 'react-router'
 
 import { FiArrowLeft } from "react-icons/fi";
 import getProducts, { getProduct } from './Api';
 import Relatedproducts from './Relatedproducts';
 import Loading from './Loading';
-const ProductDetails = ({onAddToCart}) => {
+import withUser from './withUser';
+const ProductDetails = ({onAddToCart ,user}) => {
   const { id } = useParams()
   const [Product, setproduct] = useState({})
   const [LoadingAnimation , setLoadingAnimation] = useState(true);
   const [num, setnum] = useState(1);
+  if(!user){
+    return <Navigate to="/login" />
+  }
   
   useEffect(function () {
     setLoadingAnimation(true);
@@ -70,4 +74,4 @@ const ProductDetails = ({onAddToCart}) => {
   )
 }
 
-export default ProductDetails
+export default withUser(ProductDetails)
