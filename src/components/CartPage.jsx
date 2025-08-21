@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
 import CartList from './CartList'
-import { Link } from 'react-router'
+import { Link, Navigate } from 'react-router'
 import { FiArrowLeft } from 'react-icons/fi'
 import CartTotal from './CartTotal'
+import withUser from './withUser'
 
 const CartPage = (props) => {
   const [TotalPrice ,setTotalPrice] = useState(0);
   function GetTotal(Price){
     setTotalPrice(Price)
+  }
+  if(!props.user){
+    return <Navigate to="/login" />
   }
   return (
     <div className='max-w-6xl m-auto flex flex-col'>
@@ -25,4 +29,4 @@ const CartPage = (props) => {
   )
 }
 
-export default CartPage
+export default withUser(CartPage)
