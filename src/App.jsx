@@ -11,6 +11,7 @@ import ForgotPassword from './components/ForgotPassword'
 import axios from 'axios'
 import Loading from './components/Loading'
 import CartList from './components/CartList'
+import Alert from './components/Alert'
 
 export const UserContext = createContext();
 export const CartContext = createContext();
@@ -20,6 +21,7 @@ const App = () => {
   const [user, setUser] = useState();
   const [cart, setcart] = useState(JSON.parse(localStorage.getItem("my-cart"))|| {});
   const [userLoading , setUserLoading] = useState(false);
+  const [alert , setAlert]=useState();
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!user && token) {
@@ -67,12 +69,14 @@ const App = () => {
     <UserContext.Provider value={{user , setUser}}>
     <div className=' bg-gray-100 overflow-x-hidden h-screen flex flex-col overflow-y-visible'>
       <Navbar className="fixed" count={count} user={user} setUser={setUser} />
+      
       <div className='grow'>
+        <Alert className="relative" alert={alert} setAlert={setAlert} />
         <Routes>
           <Route path='/' element={<AllProducts  />} />
           <Route path='/productDetails/:id' element={<ProductDetails onAddToCart={HandleAddToCart} />} />
           <Route path='cart' element={<CartPage updateCart={updateCart}/>} />
-          <Route path='/login' element={<EasyLogin  />} />
+          <Route path='/login' element={<EasyLogin setAlert={setAlert} alert={alert}  />} />
           <Route path='/signup' element={<SignUpPage  />} />
           <Route path='/forgotpassword' element={<ForgotPassword />} />
         </Routes>

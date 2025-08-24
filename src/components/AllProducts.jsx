@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, memo, useState } from 'react'
 import ProductList from "./ProductList"
 import getProducts from "./Api"
 import { Link, Navigate } from 'react-router'
@@ -81,4 +81,4 @@ const AllProducts = ({user}) => {
   )
 }
 
-export default withUser(AllProducts)
+export default withUser(memo(AllProducts))
