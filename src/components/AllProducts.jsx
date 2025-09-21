@@ -50,9 +50,9 @@ const AllProducts = ({user}) => {
       return parseInt(y.price)-parseInt(x.price);
     })
   }
-   if(!user && !token){
-    return <Navigate to="/login" />
-  }
+  //  if(!user && !token){
+  //   return <Navigate to="/login" />
+  // }
   return (
     <div className='flex flex-col max-w-6xl mx-auto flex-wrap px-5'>
     
