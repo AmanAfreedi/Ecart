@@ -36,9 +36,9 @@ const initialValues = {
    
 }
 const SignUpPage = ({ values, errors, touched, handleSubmit, handleChange, handleBlur,setUser,user}) => {
-    if(user){
-        return <Navigate to="/" />
-    }
+    // if(user){
+    //     return <Navigate to="/" />
+    // }
 
     return (
         <div className='flex justify-center items-center w-screen h-screen bg-gradient-to-t from-[#0e4cc7] to-white'>

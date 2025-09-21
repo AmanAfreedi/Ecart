@@ -11,9 +11,9 @@ const ProductDetails = ({onAddToCart ,user}) => {
   const [Product, setproduct] = useState({})
   const [LoadingAnimation , setLoadingAnimation] = useState(true);
   const [num, setnum] = useState(1);
-  if(!user){
-    return <Navigate to="/login" />
-  }
+  // if(!user){
+  //   return <Navigate to="/login" />
+  // }
   
   useEffect(function () {
     setLoadingAnimation(true);

@@ -57,7 +57,7 @@ const AllProducts = ({user}) => {
     <div className='flex flex-col max-w-6xl mx-auto flex-wrap px-5'>
     
     <div className='flex flex-col grow bg-white self-center max-w-6xl mt-10 mb-10 '>
-      <div className='font-semibold text-2xl text-gray-400 p-3 self-end'>Welcome, {user.full_name}</div>
+      <div className='font-semibold text-2xl text-gray-400 p-3 self-end'>Welcome</div>
       <div className='flex justify-between'>
       <input onChange={handleQueryChange} type="text" placeholder='Search' className=' bg-blue-50 w-[100px] ml-10 md:ml-3 pl-4 border-1 md:w-[280px] h-10 mt-20'/>
       <select onChange={handleSortChange} className='border  md: bg-blue-50 p-1 md:pl-3 md:w-[280px] mr-10 md:pr-10  mt-20  w-[100px] md:mr-3'>

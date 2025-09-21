@@ -15,7 +15,7 @@ const Navbar = ({count,user,setUser}) => {
         <div className='flex items-center'>
         {user && <button onClick={handleLogout} className='font-semibold  rounded border border-[#ff5151] px-3 text-center pb-1 mr-5 text-[#ff5151] hover:bg-[#ff5151] hover:text-white hover:shadow  ' >LogOut</button>}
           <Link to={'/cart'} ><CiShoppingCart className='w-13 h-13 hover:text-[#ff5151] mr-5' /></Link>
-          {user && <span className='-ml-9 -mt-6 text-[13px] px-1 bg-orange-200 rounded-[50%] font-extrabold text-[#ff5151] b'>{count}</span>}
+          {<span className='-ml-9 -mt-6 text-[13px] px-1 bg-orange-200 rounded-[50%] font-extrabold text-[#ff5151] b'>{count}</span>}
         </div>
         
       </div>

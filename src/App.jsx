@@ -22,23 +22,23 @@ const App = () => {
   const [cart, setcart] = useState(JSON.parse(localStorage.getItem("my-cart"))|| {});
   const [userLoading , setUserLoading] = useState(false);
   const [alert , setAlert]=useState();
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!user && token) {
-      console.log(token)
-      axios.get("https://myeasykart.codeyogi.io/me", {
-        headers: {
-          Authorization: token
-        }
-      }).then((response) => {
-        setUser(response.data);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (!user && token) {
+  //     console.log(token)
+  //     axios.get("https://myeasykart.codeyogi.io/me", {
+  //       headers: {
+  //         Authorization: token
+  //       }
+  //     }).then((response) => {
+  //       setUser(response.data);
         
-        setUserLoading(false);
-      })
-    }else{
-      setUserLoading(false);
-    }
-  }, [])
+  //       setUserLoading(false);
+  //     })
+  //   }else{
+  //     setUserLoading(false);
+  //   }
+  // }, [])
   function HandleAddToCart(id, quantity) {
     const newQuantity = (cart[id] || 0) + parseInt(quantity)
     const newCart = { ...cart, [id]: newQuantity }

@@ -10,9 +10,9 @@ const CartPage = (props) => {
   function GetTotal(Price){
     setTotalPrice(Price)
   }
-  if(!props.user){
-    return <Navigate to="/login" />
-  }
+  // if(!props.user){
+  //   return <Navigate to="/login" />
+  // }
   return (
     <div className='max-w-6xl m-auto flex flex-col'>
       <Link to={"/"}><FiArrowLeft className='hover:text-orange-500 hover:border-orange-500 w-7 h-7 p-1 mb-5 mt-5 border-1 rounded-[50%]' /></Link>
